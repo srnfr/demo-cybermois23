@@ -14,10 +14,6 @@
 
 FROM php:8.0-apache-buster
 
-#RUN apt update && apt install -y gip zip unzip
-#COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
-#RUN composer require predis/predis
-
 RUN pear channel-discover pear.nrk.io
 RUN pear install nrk/Predis
 
@@ -27,3 +23,7 @@ RUN sed -i 's#CustomLog /proc/self/fd/1 combined#CustomLog "|/bin/cat" combined#
 ADD Code/guestbook.php /var/www/html/guestbook.php
 ADD Code/controllers.js /var/www/html/controllers.js
 ADD Code/index.html /var/www/html/index.html
+
+ENV GET_HOSTS_FROM=env
+ENV REDIS_HOST=localhost
+ENV REDIS_PWD='pwd'

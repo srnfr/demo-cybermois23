@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM php:8.0-apache-buster
+FROM php:8.0-apache-bullseye
 
 RUN pear channel-discover pear.nrk.io
 RUN pear install nrk/Predis

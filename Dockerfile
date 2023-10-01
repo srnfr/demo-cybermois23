@@ -14,6 +14,7 @@
 
 FROM php:8.0-apache-buster
 
+RUN apt update && apt install -y redis-tools vim
 RUN pear channel-discover pear.nrk.io
 RUN pear install nrk/Predis
 
@@ -26,4 +27,5 @@ ADD Code/index.html /var/www/html/index.html
 
 ENV GET_HOSTS_FROM=env
 ENV REDIS_HOST=localhost
-ENV REDIS_PWD='pwd'
+ENV REDIS_PORT=6879
+ENV REDIS_PWD=''

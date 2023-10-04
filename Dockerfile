@@ -29,6 +29,8 @@ COPY Code/index.html index.html
 
 RUN composer require predis/predis
 
+RUN apt remove -y curl
+
 ENV GET_HOSTS_FROM=env
 ENV REDIS_HOST=localhost
 ENV REDIS_PWD=''
